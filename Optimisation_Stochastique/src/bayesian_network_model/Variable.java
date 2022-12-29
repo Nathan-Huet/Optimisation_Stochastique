@@ -1,4 +1,4 @@
-package bayes_model;
+package bayesian_network_model;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -9,6 +9,7 @@ public class Variable {
 	private ArrayList<Variable> parents = new ArrayList<>();
 	private ArrayList<Variable> children = new ArrayList<>();
 	private ConditionalProbabilityTable cpt;
+	private PropagationTable propagationTable;
 	
 	public Variable(String name, ArrayList<Object> domain) {
 		super();
@@ -69,6 +70,12 @@ public class Variable {
 		Variable other = (Variable) obj;
 		return Objects.equals(name, other.name);
 	}
+
+	public PropagationTable getPropagationTable() {
+		return propagationTable;
+	}
 	
-	
+	public void setPropagationTable(PropagationTable pt) {
+		this.propagationTable = pt;
+	}
 }

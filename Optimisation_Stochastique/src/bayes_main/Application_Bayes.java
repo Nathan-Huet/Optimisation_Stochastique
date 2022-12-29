@@ -5,11 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import bayes_model.BayesianNetwork;
-import bayes_model.ConditionalProbabilityTable;
-import bayes_model.Configuration;
-import bayes_model.State;
-import bayes_model.Variable;
+import bayesian_network_model.*;
+
 
 public class Application_Bayes {
 

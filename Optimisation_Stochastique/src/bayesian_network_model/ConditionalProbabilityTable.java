@@ -1,4 +1,4 @@
-package bayes_model;
+package bayesian_network_model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
