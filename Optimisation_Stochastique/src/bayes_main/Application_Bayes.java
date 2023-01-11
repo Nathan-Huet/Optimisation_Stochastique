@@ -12,7 +12,7 @@ public class Application_Bayes {
 
 	public static void main(String[] args) {
 		Application_Bayes app = new Application_Bayes();
-		app.launch2();
+		app.launchABCDEFGHI();
 	}
 
 	public void launchCambriolage() {
@@ -175,7 +175,7 @@ public class Application_Bayes {
 		}
 	}
 
-	public void launch2() {
+	public void launchABCDEFGHI() {
 		ArrayList<Object> domain = new ArrayList<>();
 		domain.add(true);
 		domain.add(false);
@@ -343,69 +343,4 @@ public class Application_Bayes {
 		System.out.println(res);
 	}
 
-	public void launch() {
-		ArrayList<Object> domain = new ArrayList<>();
-		domain.add(true);
-		domain.add(false);
-
-
-		Variable p1 = new Variable("p1", domain);
-		Variable p2 = new Variable("p2", domain);
-		Variable p3 = new Variable("p3", domain);
-
-		p1.addChild(p3);
-		p2.addChild(p3);
-
-		ArrayList<Double> probaP1 = new ArrayList<>();
-		probaP1.add(0.4);
-		probaP1.add(0.6);
-		p1.setCpt(new ConditionalProbabilityTable(probaP1));
-
-		ArrayList<Double> probaP2 = new ArrayList<>();
-		probaP2.add(0.7);
-		probaP2.add(0.3);
-		p2.setCpt(new ConditionalProbabilityTable(probaP2));
-
-		ArrayList<Configuration> cptP3Config = ConditionalProbabilityTable.generateAllConfigurations(p3.getParents());
-		HashMap<Configuration, ArrayList<Double>> relationsP3 = new HashMap<>();
-		ArrayList<Double> probabilities = new ArrayList<>();
-		probabilities.add(0.1);
-		probabilities.add(0.9);
-		relationsP3.put(cptP3Config.get(0), probabilities);
-		probabilities = new ArrayList<>();
-		probabilities.add(0.8);
-		probabilities.add(0.2);
-		relationsP3.put(cptP3Config.get(1), probabilities);
-		probabilities = new ArrayList<>();
-		probabilities.add(0.3);
-		probabilities.add(0.7);
-		relationsP3.put(cptP3Config.get(2), probabilities);
-		probabilities = new ArrayList<>();
-		probabilities.add(0.1);
-		probabilities.add(0.9);
-		relationsP3.put(cptP3Config.get(3), probabilities);
-		p3.setCpt(new ConditionalProbabilityTable(relationsP3));
-
-		ArrayList<Variable> variables = new ArrayList<>();
-		variables.add(p1);
-		variables.add(p2);
-		variables.add(p3);
-
-
-
-		BayesianNetwork bn = new BayesianNetwork(variables);
-
-		ArrayList<State> request = new ArrayList<>();
-		request.add(new State(p1, 1));
-		Set<State> evidences = new HashSet<>();
-		evidences.add(new State(p2, 0));
-		//evidences.add(new State(p2, 0));
-
-		System.out.println(request);
-		System.out.println(evidences);
-		System.out.println();
-		Double res = bn.enumerationRequest(request,evidences);
-		System.out.println(res);
-
-	}
 }

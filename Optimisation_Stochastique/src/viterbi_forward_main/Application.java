@@ -74,7 +74,7 @@ public class Application {
 		HiddenMarkovModel hmm = new HiddenMarkovModel(transitionMatrix, observationMatrix, initialLaw, states, observations);
 		
 		Application app = new Application();
-		//app.launchAlphaForward(hmm);
+		app.launchAlphaForward(hmm);
 		app.launchViterbi(hmm);
 		
 		//app.afficher(hmm);
